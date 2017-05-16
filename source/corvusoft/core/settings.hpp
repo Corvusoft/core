@@ -48,20 +48,15 @@ namespace corvusoft
                 //Functionality
                 void erase( const std::string& name );
                 
-                bool has_property( const std::string& name ) const;
+                bool has( const std::string& name ) const;
                 
                 //Getters
-                float get_property( const std::string& name, const float default_value ) const;
+                std::string get( const std::string& name, const std::string& default_value = "" ) const;
                 
-                double get_property( const std::string& name, const double default_value ) const;
-                
-                std::string get_property( const std::string& name, const std::string& default_value = "" ) const;
-                
-                //use std::enable_if_t to remove the float and double signatures above.
-                template< typename Type, typename std::enable_if< std::is_arithmetic< Type >::value, Type >::type = 0 >
-                Type get_property( const std::string& name, const Type default_value ) const
+                template< typename Type, typename = std::enable_if_t< std::is_arithmetic< Type >::value > >
+                Type get( const std::string& name, const Type default_value ) const
                 {
-                    std::istringstream stream( get_property( name, "" ) );
+                    std::istringstream stream( get( name ) );
                     
                     Type parameter;
                     stream >> parameter;
@@ -70,17 +65,12 @@ namespace corvusoft
                 }
                 
                 //Setters
-                void set_property( const std::string& name, const float value );
+                void set( const std::string& name, const std::string& value );
                 
-                void set_property( const std::string& name, const double value );
-                
-                void set_property( const std::string& name, const std::string& value );
-                
-                //use std::enable_if_t to remove the float and double signatures above.
-                template< typename Type, typename std::enable_if< std::is_arithmetic< Type >::value, Type >::type = 0 >
-                void set_property( const std::string& name, const Type value )
+                template< typename Type, typename = std::enable_if_t< std::is_arithmetic< Type >::value > >
+                void set( const std::string& name, const Type value )
                 {
-                    set_property( name, std::to_string( value ) );
+                    set( name, std::to_string( value ) );
                 }
                 
                 //Operators
