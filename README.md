@@ -1,4 +1,4 @@
-Core
+Core [![Windows Build status](https://ci.appveyor.com/api/projects/status/re5trxa0vpphwac1?svg=true)](https://ci.appveyor.com/project/Corvusoft/core)
 =============================================================================================================================
 
 License
