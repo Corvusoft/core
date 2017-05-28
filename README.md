@@ -1,4 +1,5 @@
-Core [![Windows Build status](https://ci.appveyor.com/api/projects/status/re5trxa0vpphwac1?svg=true)](https://ci.appveyor.com/project/Corvusoft/core)
+Core [![Unix Build Status](https://travis-ci.org/Corvusoft/core.svg?branch=master)](https://travis-ci.org/Corvusoft/core)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/re5trxa0vpphwac1?svg=true)](https://ci.appveyor.com/project/Corvusoft/core)
 =============================================================================================================================
 
 License
