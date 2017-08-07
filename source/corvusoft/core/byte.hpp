@@ -38,6 +38,11 @@ namespace corvusoft
         {
             return Bytes( value.begin( ), value.end( ) );
         }
+        
+        static inline std::string make_string( const Bytes& value )
+        {
+            return std::string( value.begin( ), value.end( ) );
+        }
     }
 }
 
