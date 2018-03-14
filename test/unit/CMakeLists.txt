@@ -13,10 +13,34 @@ include_directories( SYSTEM ${catch_INCLUDE} )
 #
 # Build
 #
-add_executable( byte_unit_test_suite ${SOURCE_DIR}/byte.cpp )
-target_link_libraries( byte_unit_test_suite ${STATIC_LIBRARY_NAME} )
-add_test( byte_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/byte_unit_test_suite )
+add_executable( byte_make_bytes_unit_test_suite ${SOURCE_DIR}/byte/make_bytes.cpp )
+target_link_libraries( byte_make_bytes_unit_test_suite ${STATIC_LIBRARY_NAME} )
+add_test( byte_make_bytes_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/byte_make_bytes_unit_test_suite )
 
-add_executable( settings_unit_test_suite ${SOURCE_DIR}/settings.cpp )
-target_link_libraries( settings_unit_test_suite ${STATIC_LIBRARY_NAME} )
-add_test( settings_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/settings_unit_test_suite )
+add_executable( byte_make_string_unit_test_suite ${SOURCE_DIR}/byte/make_string.cpp )
+target_link_libraries( byte_make_string_unit_test_suite ${STATIC_LIBRARY_NAME} )
+add_test( byte_make_string_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/byte_make_string_unit_test_suite )
+
+add_executable( settings_constructor_unit_test_suite ${SOURCE_DIR}/settings/constructor.cpp )
+target_link_libraries( settings_constructor_unit_test_suite ${STATIC_LIBRARY_NAME} )
+add_test( settings_constructor_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/settings_constructor_unit_test_suite )
+
+add_executable( settings_destructor_unit_test_suite ${SOURCE_DIR}/settings/destructor.cpp )
+target_link_libraries( settings_destructor_unit_test_suite ${STATIC_LIBRARY_NAME} )
+add_test( settings_destructor_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/settings_destructor_unit_test_suite )
+
+add_executable( settings_erase_unit_test_suite ${SOURCE_DIR}/settings/erase.cpp )
+target_link_libraries( settings_erase_unit_test_suite ${STATIC_LIBRARY_NAME} )
+add_test( settings_erase_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/settings_erase_unit_test_suite )
+
+add_executable( settings_get_unit_test_suite ${SOURCE_DIR}/settings/get.cpp )
+target_link_libraries( settings_get_unit_test_suite ${STATIC_LIBRARY_NAME} )
+add_test( settings_get_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/settings_get_unit_test_suite )
+
+add_executable( settings_has_unit_test_suite ${SOURCE_DIR}/settings/has.cpp )
+target_link_libraries( settings_has_unit_test_suite ${STATIC_LIBRARY_NAME} )
+add_test( settings_has_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/settings_has_unit_test_suite )
+
+add_executable( settings_set_unit_test_suite ${SOURCE_DIR}/settings/set.cpp )
+target_link_libraries( settings_set_unit_test_suite ${STATIC_LIBRARY_NAME} )
+add_test( settings_set_unit_test_suite ${EXECUTABLE_OUTPUT_PATH}/settings_set_unit_test_suite )

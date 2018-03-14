@@ -35,22 +35,32 @@ namespace corvusoft
         
         void Settings::erase( const string& name )
         {
-            m_pimpl->properties.erase( name );
+            auto iterator = m_pimpl->find( name );
+            if ( iterator not_eq m_pimpl->properties.end( ) )
+                m_pimpl->properties.erase( iterator );
         }
         
         bool Settings::has( const string& name ) const
         {
-            return m_pimpl->properties.count( name );
+            return m_pimpl->find( name ) not_eq m_pimpl->properties.end( );
         }
         
         string Settings::get( const string& name, const string& default_value ) const
         {
-            return ( has( name ) ) ? m_pimpl->properties.at( name ) : default_value;
+            auto iterator = m_pimpl->find( name );
+            if ( iterator == m_pimpl->properties.end( ) )
+                return default_value;
+                
+            return iterator->second;
         }
         
         void Settings::set( const string& name, const string& value )
         {
-            m_pimpl->properties[ name ] = value;
+            auto iterator = m_pimpl->find( name );
+            if ( iterator not_eq m_pimpl->properties.end( ) )
+                iterator->second = value;
+            else
+                m_pimpl->properties.emplace( name, value );
         }
     }
 }

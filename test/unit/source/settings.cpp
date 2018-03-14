@@ -15,12 +15,12 @@ using corvusoft::core::Settings;
 
 //External Namespaces
 
-TEST_CASE( "Setup" )
+TEST_CASE( "Constructor." )
 {
     REQUIRE_NOTHROW( new Settings );
 }
 
-TEST_CASE( "Clean-up" )
+TEST_CASE( "Destructor." )
 {
     auto settings = new Settings;
     REQUIRE_NOTHROW( delete settings );
@@ -33,7 +33,7 @@ TEST_CASE( "Clean-up" )
     REQUIRE_NOTHROW( delete settings );
 }
 
-TEST_CASE( "Accessing properties" )
+TEST_CASE( "Accessing properties." )
 {
     Settings settings;
     settings.set( "string name", "string value" );
@@ -59,7 +59,7 @@ TEST_CASE( "Accessing properties" )
     REQUIRE( double_value == 3.141593 );
 }
 
-TEST_CASE( "Removing properties" )
+TEST_CASE( "Removing properties." )
 {
     Settings settings;
     settings.set( "string name", "string value" );
@@ -89,7 +89,7 @@ TEST_CASE( "Removing properties" )
     REQUIRE( double_value == default_double_value );
 }
 
-TEST_CASE( "Default property values" )
+TEST_CASE( "Default property values." )
 {
     Settings settings;
     
@@ -110,33 +110,33 @@ TEST_CASE( "Default property values" )
     REQUIRE( double_value == default_double_value );
 }
 
-TEST_CASE( "Property name case sensitivity" )
+TEST_CASE( "Property name case insensitivity." )
 {
     Settings settings;
     settings.set( "string name", "string value" );
-    REQUIRE( settings.has( "stRing name" ) == false );
-    REQUIRE( settings.get( "stRing name" ) == "" );
+    REQUIRE( settings.has( "stRing name" ) == true );
+    REQUIRE( settings.get( "stRing name" ) == "string value" );
     
     settings.set( "integer name", 12345 );
-    REQUIRE( settings.has( "inteGer Name" ) == false );
+    REQUIRE( settings.has( "inteGer Name" ) == true );
     const int default_integer_value = 0;
     const int integer_value = settings.get( "inteGer Name", default_integer_value );
-    REQUIRE( integer_value == default_integer_value );
+    REQUIRE( integer_value == 12345 );
     
     settings.set( "float name", 3.14159f );
-    REQUIRE( settings.has( "float NAME" ) == false );
+    REQUIRE( settings.has( "float NAME" ) == true );
     const float default_float_value = 0.0f;
     const float float_value = settings.get( "float NAME", default_float_value );
-    REQUIRE( float_value == default_float_value );
+    REQUIRE( float_value == 3.14159f );
     
     settings.set( "double name", 3.141593 );
-    REQUIRE( settings.has( "DOUBLE NAME" ) == false );
+    REQUIRE( settings.has( "DOUBLE NAME" ) == true );
     const double default_double_value = 0.0;
     const double double_value = settings.get( "DOUBLE NAME", default_double_value );
-    REQUIRE( double_value == default_double_value );
+    REQUIRE( double_value == 3.141593 );
 }
 
-TEST_CASE( "Overwriting properies" )
+TEST_CASE( "Overwriting properies." )
 {
     Settings settings;
     settings.set( "name", "value" );
@@ -162,7 +162,7 @@ TEST_CASE( "Overwriting properies" )
     REQUIRE( double_value == 3.141593 );
 }
 
-TEST_CASE( "Fetching incorrect data type from string" )
+TEST_CASE( "Fetching incorrect data type from string." )
 {
     Settings settings;
     settings.set( "name", "value" );
@@ -182,7 +182,7 @@ TEST_CASE( "Fetching incorrect data type from string" )
     REQUIRE( double_value == default_double_value );
 }
 
-TEST_CASE( "Fetching incorrect data type from numeric" )
+TEST_CASE( "Fetching incorrect data type from numeric." )
 {
     Settings settings;
     settings.set( "name", 1.345678f );

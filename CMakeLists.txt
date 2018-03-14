@@ -61,6 +61,7 @@ target_link_libraries( ${SHARED_LIBRARY_NAME} )
 
 enable_testing( )
 add_subdirectory( "${PROJECT_SOURCE_DIR}/test/unit" )
+add_subdirectory( "${PROJECT_SOURCE_DIR}/test/integration" )
 
 #
 # Install

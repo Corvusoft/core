@@ -8,6 +8,7 @@
 //System Includes
 #include <map>
 #include <string>
+#include <algorithm>
 
 //Project Includes
 
@@ -34,6 +35,17 @@ namespace corvusoft
             struct SettingsImpl
             {
                 std::map< std::string, std::string > properties { };
+                
+                std::map< std::string, std::string >::iterator find( const std::string& name )
+                {
+                    return std::find_if( properties.begin( ), properties.end( ), [ &name ]( auto entry )
+                    {
+                        return std::equal( entry.first.begin( ), entry.first.end( ), name.begin( ), [ ]( auto lhs, auto rhs )
+                        {
+                            return std::tolower( lhs ) == std::tolower( rhs );
+                        } );
+                    } );
+                }
             };
         }
     }
