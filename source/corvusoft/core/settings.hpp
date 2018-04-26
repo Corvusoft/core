@@ -2,8 +2,7 @@
  * Copyright 2013-2018, Corvusoft Ltd, All Rights Reserved.
  */
 
-#ifndef _CORVUSOFT_CORE_SETTINGS_H
-#define _CORVUSOFT_CORE_SETTINGS_H 1
+#pragma once
 
 //System Includes
 #include <memory>
@@ -116,5 +115,3 @@ namespace corvusoft
         };
     }
 }
-
-#endif  /* _CORVUSOFT_CORE_SETTINGS_H */

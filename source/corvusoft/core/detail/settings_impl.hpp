@@ -2,8 +2,7 @@
  * Copyright 2013-2018, Corvusoft Ltd, All Rights Reserved.
  */
 
-#ifndef _CORVUSOFT_CORE_DETAIL_SETTINGS_IMPL_H
-#define _CORVUSOFT_CORE_DETAIL_SETTINGS_IMPL_H 1
+#pragma once
 
 //System Includes
 #include <map>
@@ -50,5 +49,3 @@ namespace corvusoft
         }
     }
 }
-
-#endif  /* _CORVUSOFT_CORE_DETAIL_SETTINGS_IMPL_H */

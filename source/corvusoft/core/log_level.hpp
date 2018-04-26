@@ -2,8 +2,7 @@
  * Copyright 2013-2018, Corvusoft Ltd, All Rights Reserved.
  */
 
-#ifndef _CORVUSOFT_CORE_LOG_LEVEL_H
-#define _CORVUSOFT_CORE_LOG_LEVEL_H 1
+#pragma once
 
 //System Includes
 
@@ -31,5 +30,3 @@ namespace corvusoft
         };
     }
 }
-
-#endif  /* _CORVUSOFT_CORE_LOG_LEVEL_H */
