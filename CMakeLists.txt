@@ -3,6 +3,8 @@ cmake_minimum_required( VERSION 3.1.0 FATAL_ERROR )
 project( "core" VERSION 1.0.0 LANGUAGES CXX )
 message( "Copyright 2013-2018, Corvusoft Ltd, All Rights Reserved." )
 
+set(BUILD_TESTS OFF CACHE BOOL "Build tests")
+
 #
 # Dependencies
 #
@@ -22,7 +24,7 @@ if ( CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT )
 endif ( )
 
 if( ${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC )
-    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /D_WIN32_WINNT=0x0601 /W4 /wd4068 /wd4702" )
+    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /D_WIN32_WINNT=0x0601 /W4 /wd4068 /wd4702 /Za" )
 endif ( )
 
 if( NOT WIN32 )
@@ -59,9 +61,11 @@ set_target_properties( ${SHARED_LIBRARY_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_N
 set_target_properties( ${SHARED_LIBRARY_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR} VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} )
 target_link_libraries( ${SHARED_LIBRARY_NAME} )
 
-enable_testing( )
-add_subdirectory( "${PROJECT_SOURCE_DIR}/test/unit" )
-add_subdirectory( "${PROJECT_SOURCE_DIR}/test/integration" )
+if ( BUILD_TESTS )
+  enable_testing( )
+  add_subdirectory( "${PROJECT_SOURCE_DIR}/test/unit" )
+  add_subdirectory( "${PROJECT_SOURCE_DIR}/test/integration" )
+endif()
 
 #
 # Install
