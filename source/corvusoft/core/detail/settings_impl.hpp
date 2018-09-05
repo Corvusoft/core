@@ -8,6 +8,7 @@
 #include <map>
 #include <string>
 #include <algorithm>
+#include <cctype>
 
 //Project Includes
 
